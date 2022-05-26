@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/repo/LearningFruit/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/repo/LearningFruit/app/src/main/res/layout/activity_storage_prediction.xml" value="0.25" />
         <entry key="..\:/repo/Object_Detection_App/Object_Detection_App-master/app/src/main/res/layout/activity_camera.xml" value="0.22826086956521738" />
         <entry key="..\:/repo/Object_Detection_App/Object_Detection_App-master/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
       </map>

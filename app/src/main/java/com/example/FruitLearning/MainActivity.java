@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Button camera_button;
+    private Button storage_prediction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,5 +46,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        storage_prediction=findViewById(R.id.storage_prediction);
+        storage_prediction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this,StoragePredictionActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                }
+        });
     }
 }
