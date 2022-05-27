@@ -20,7 +20,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword, editTextConfirmPassword;
     private Button btnSignUp;
-    //private ProgressDialog progressDialog;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void initUI(){
-        //progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
@@ -61,12 +61,12 @@ public class SignUpActivity extends AppCompatActivity {
         } else {
             if (strPass.equals(strConfirmPass)) {
                 FirebaseAuth auth = FirebaseAuth.getInstance();
-                //progressDialog.show();
+                progressDialog.show();
                 auth.createUserWithEmailAndPassword(strEmail, strPass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            //progressDialog.dismiss();
+                            progressDialog.dismiss();
                             if (task.isSuccessful()) {
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 startActivity(intent);

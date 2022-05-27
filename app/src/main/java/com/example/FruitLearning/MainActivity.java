@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         });
 
-        btnLogOut = findViewById(R.id.buttonSignUp);
+        btnLogOut = findViewById(R.id.btnLogOut);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
