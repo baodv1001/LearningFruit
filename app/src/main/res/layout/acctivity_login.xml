@@ -48,14 +48,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have an account"/>
-        <Button
+        <TextView
             android:id="@+id/buttonSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign up"
+            android:textColor="@color/purple_200"
             tools:layout_editor_absoluteX="161dp"
-            tools:layout_editor_absoluteY="271dp"
-            android:layout_marginLeft="10dp"/>
+            tools:layout_editor_absoluteY="271dp"/>
     </LinearLayout>
 
 </LinearLayout>

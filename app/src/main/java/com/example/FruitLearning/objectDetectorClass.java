@@ -3,6 +3,7 @@ package com.example.FruitLearning;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.checkerframework.checker.units.qual.A;
@@ -103,15 +104,15 @@ public class objectDetectorClass {
         width=bitmap.getWidth();
 
         // scale the bitmap to input size of model
-         Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,INPUT_SIZE,INPUT_SIZE,false);
+        Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,INPUT_SIZE,INPUT_SIZE,false);
 
-         // convert bitmap to bytebuffer as model input should be in it
+        // convert bitmap to bytebuffer as model input should be in it
         ByteBuffer byteBuffer=convertBitmapToByteBuffer(scaledBitmap);
 
         // defining output
         // 10: top 10 object detected
         // 4: there coordinate in image
-      //  float[][][]result=new float[1][10][4];
+        //  float[][][]result=new float[1][10][4];
         Object[] input=new Object[1];
         input[0]=byteBuffer;
 
@@ -161,7 +162,7 @@ public class objectDetectorClass {
                 // draw rectangle in Original frame //  starting point    // ending point of box  // color of box       thickness
                 Imgproc.rectangle(rotated_mat_image,new Point(left,top),new Point(right,bottom),new Scalar(0, 255, 0, 255),2);
                 // write text on frame
-                                                // string of class name of object  // starting point                         // color of text           // size of text
+                // string of class name of object  // starting point                         // color of text           // size of text
                 Imgproc.putText(rotated_mat_image,labelList.get((int) class_value) +  String.valueOf(score_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
             }
 
@@ -174,6 +175,88 @@ public class objectDetectorClass {
         b.release();
         return mat_image;
     }
+
+    public Mat recognizePhoto(Mat mat_image){
+
+        // if you do not do this process you will get improper prediction, less no. of object
+        // now convert it to bitmap
+        Bitmap bitmap=null;
+        bitmap=Bitmap.createBitmap(mat_image.cols(),mat_image.rows(),Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(mat_image,bitmap);
+        // define height and width
+        height=bitmap.getHeight();
+        width=bitmap.getWidth();
+
+        // scale the bitmap to input size of model
+        Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,INPUT_SIZE,INPUT_SIZE,false);
+
+        // convert bitmap to bytebuffer as model input should be in it
+        ByteBuffer byteBuffer=convertBitmapToByteBuffer(scaledBitmap);
+
+        // defining output
+        // 10: top 10 object detected
+        // 4: there coordinate in image
+        //  float[][][]result=new float[1][10][4];
+        Object[] input=new Object[1];
+        input[0]=byteBuffer;
+
+        Map<Integer,Object> output_map=new TreeMap<>();
+        // we are not going to use this method of output
+        // instead we create treemap of three array (boxes,score,classes)
+
+        float[][][] boxes =new float[1][10][4];
+        // 10: top 10 object detected
+        // 4: there coordinate in image
+        float[][] scores=new float[1][10];
+        // stores scores of 10 object
+        float[][] classes=new float[1][10];
+        // stores class of object
+
+        // add it to object_map;
+        output_map.put(1,boxes);
+        output_map.put(3,classes);
+        output_map.put(0,scores);
+
+
+        // now predict
+        interpreter.runForMultipleInputsOutputs(input,output_map);
+        // Before watching this video please watch my previous 2 video of
+        //      1. Loading tensorflow lite model
+        //      2. Predicting object
+        // In this video we will draw boxes and label it with it's name
+
+        Object value=output_map.get(1);
+        Object Object_class=output_map.get(3);
+        Object score=output_map.get(0);
+
+        Log.d("class", "is" +  Array.get(Array.get(Object_class,0),0));
+        Log.d("score", "is" +  Array.get(Array.get(score,0),0));
+
+        // loop through each object
+        // as output has only 10 boxes
+        for (int i=0;i<10;i++){
+            float class_value=(float) Array.get(Array.get(Object_class,0),i);
+            float score_value=(float) Array.get(Array.get(score,0),i);
+            // define threshold for score
+            if(score_value>0.5){
+                Object box1=Array.get(Array.get(value,0),i);
+                // we are multiplying it with Original height and width of frame
+
+                float top=(float) Array.get(box1,0)*height;
+                float left=(float) Array.get(box1,1)*width;
+                float bottom=(float) Array.get(box1,2)*height;
+                float right=(float) Array.get(box1,3)*width;
+                // draw rectangle in Original frame //  starting point    // ending point of box  // color of box       thickness
+                Imgproc.rectangle(mat_image,new Point(left,top),new Point(right,bottom),new Scalar(0, 255, 0, 255),2);
+                // write text on frame
+                // string of class name of object  // starting point                         // color of text           // size of text
+                Imgproc.putText(mat_image,labelList.get((int) class_value) +  String.valueOf(score_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
+            }
+
+        }
+        return mat_image;
+    }
+
 
     private ByteBuffer convertBitmapToByteBuffer(Bitmap bitmap) {
         ByteBuffer byteBuffer;
@@ -211,8 +294,6 @@ public class objectDetectorClass {
                 }
             }
         }
-    return byteBuffer;
+        return byteBuffer;
     }
 }
-// Next video is about drawing box and labeling it
-// If you have any problem please inform me

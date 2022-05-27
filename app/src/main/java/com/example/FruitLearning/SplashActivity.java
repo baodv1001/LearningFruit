@@ -22,17 +22,17 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 nextActivity();
             }
-        }, 2000);
+        }, 3000);
     }
 
     private void nextActivity() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user==null) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+        Intent intent;
+        if (user == null) {
+            intent = new Intent(this, LoginActivity.class);
         } else {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, MainActivity.class);
         }
+        startActivity(intent);
     }
 }

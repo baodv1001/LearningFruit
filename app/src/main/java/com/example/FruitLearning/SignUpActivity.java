@@ -20,7 +20,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword, editTextConfirmPassword;
     private Button btnSignUp;
-    private ProgressDialog progressDialog;
+    //private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,15 @@ public class SignUpActivity extends AppCompatActivity {
         
         initUI();
         initListener();
+    }
+
+    private void initUI(){
+        //progressDialog = new ProgressDialog(this);
+
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
+        btnSignUp = findViewById(R.id.buttonSignUp);
     }
 
     private void initListener() {
@@ -45,42 +54,34 @@ public class SignUpActivity extends AppCompatActivity {
         String strPass = editTextPassword.getText().toString().trim();
         String strConfirmPass = editTextConfirmPassword.getText().toString().trim();
 
-        if (strEmail == null || strPass == null || strConfirmPass == null){
+        if (strEmail.isEmpty() || strPass.isEmpty() || strConfirmPass.isEmpty()){
             Toast.makeText(SignUpActivity.this, "Please fill in all the information!",
                     Toast.LENGTH_SHORT).show();
             return;
-        }
-
-        if (strPass == strConfirmPass) {
-            FirebaseAuth auth = FirebaseAuth.getInstance();
-            progressDialog.show();
-            auth.createUserWithEmailAndPassword(strEmail, strPass)
+        } else {
+            if (strPass.equals(strConfirmPass)) {
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                //progressDialog.show();
+                auth.createUserWithEmailAndPassword(strEmail, strPass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressDialog.dismiss();
+                            //progressDialog.dismiss();
                             if (task.isSuccessful()) {
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 startActivity(intent);
-                                finish();
+                                finishAffinity();
                             } else {
                                 Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-        } else {
-            Toast.makeText(SignUpActivity.this, "Confirm password failed",
-                    Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(SignUpActivity.this, "Confirm password failed",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
-
     }
 
-    private void initUI(){
-        editTextEmail = findViewById(R.id.editTextEmail);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
-        btnSignUp = findViewById(R.id.buttonSignUp);
-        progressDialog = new ProgressDialog(this);
-    }
 }

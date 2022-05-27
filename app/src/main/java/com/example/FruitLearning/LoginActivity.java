@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
     private ProgressDialog progressDialog;
 
-    private LinearLayout layoutLogin;
+    private LinearLayout layoutSignUp;
 
     @Override
     protected void  onCreate(Bundle savedInstanceState){
@@ -34,14 +34,14 @@ public class LoginActivity extends AppCompatActivity {
     private void initUI(){
         progressDialog = new ProgressDialog(this);
 
-        layoutLogin = findViewById(R.id.layoutSignUp);
+        layoutSignUp = findViewById(R.id.layoutSignUp);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         btnLogin = findViewById(R.id.buttonLogin);
     }
 
     private void initListener(){
-        layoutLogin.setOnClickListener(new View.OnClickListener() {
+        layoutSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);

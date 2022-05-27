@@ -25,29 +25,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FruitLearning">
-<<<<<<< Updated upstream
-        <activity android:name=".CameraActivity"></activity>
-        <activity android:name=".MainActivity">
-=======
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StoragePredictionActivity"
-            android:exported="false" />
-        <activity android:name=".SplashActivity">
->>>>>>> Stashed changes
+        <activity android:name=".CameraActivity"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".SplashActivity"/>
+        <activity android:name=".StoragePredictionActivity"/>
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CameraActivity" />
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
