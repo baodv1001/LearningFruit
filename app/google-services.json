@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "486920415363",
+    "firebase_url": "https://learningfruit-209f2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "learningfruit-209f2",
+    "storage_bucket": "learningfruit-209f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486920415363:android:0523b22af37487de4a53b6",
+        "android_client_info": {
+          "package_name": "com.example.FruitLearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486920415363-b2kc5fcb3sg09rjqqk6mo5dd5ahg1rkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChOiom3HiPvQrNj4QMiF6xe8Mz8VvVeLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486920415363-b2kc5fcb3sg09rjqqk6mo5dd5ahg1rkg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
