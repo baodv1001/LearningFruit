@@ -60,10 +60,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-<<<<<<< Updated upstream
-}
-=======
-
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:30.0.2')
 
@@ -73,6 +69,3 @@ dependencies {
     implementation("com.google.gms:google-services:4.3.10")
     implementation("com.google.firebase:firebase-auth")
 }
-
-
->>>>>>> Stashed changes

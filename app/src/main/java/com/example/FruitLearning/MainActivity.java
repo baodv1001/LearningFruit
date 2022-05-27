@@ -25,11 +25,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Button camera_button;
-<<<<<<< Updated upstream
-=======
     private Button storage_prediction;
     private Button btnLogOut;
->>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<< Updated upstream
-=======
         storage_prediction=findViewById(R.id.storage_prediction);
         storage_prediction.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,6 +67,5 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
->>>>>>> Stashed changes
     }
 }
