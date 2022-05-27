@@ -33,6 +33,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/btnFruitQuiz"
+        android:text="My quiz"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/btnLogOut"
         android:text="Log out"/>
 

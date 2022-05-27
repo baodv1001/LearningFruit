@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Button camera_button;
     private Button storage_prediction;
     private Button btnLogOut;
+    private Button btnMyQuiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        btnMyQuiz = findViewById(R.id.btnFruitQuiz);
+        btnMyQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, FruitQuizzActivity.class);
+                startActivity((intent));
             }
         });
     }
