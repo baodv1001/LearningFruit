@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import org.opencv.android.OpenCVLoader;
 
 import java.io.IOException;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button camera_button;
     private Button storage_prediction;
+    private Button btnLogOut;
+    private Button btnMyQuiz;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +51,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        storage_prediction = findViewById(R.id.storage_prediction);
+        storage_prediction=findViewById(R.id.storage_prediction);
         storage_prediction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this,StoragePredictionActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                }
+        });
+
+        btnLogOut = findViewById(R.id.btnLogOut);
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, StoragePredictionActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnMyQuiz = findViewById(R.id.btnFruitQuiz);
+        btnMyQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, FruitQuizzActivity.class);
+                startActivity((intent));
+
             }
         });
     }
