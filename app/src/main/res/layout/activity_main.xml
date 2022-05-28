@@ -22,6 +22,14 @@
         android:layout_height="50dp"
         android:id="@+id/camera_button"
         android:text="Real-time"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/storage_prediction"
+        android:text="Storage"
         />
 
     <Button

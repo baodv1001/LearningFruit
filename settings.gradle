@@ -1,3 +1,3 @@
 include ':app'
-rootProject.name = "ImagePro"
+rootProject.name = "LearningFruit"
 include ':openCVLibrary3413'

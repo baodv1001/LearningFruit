@@ -31,6 +31,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".StoragePredictionActivity" />
         <activity android:name=".SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
