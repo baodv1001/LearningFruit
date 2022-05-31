@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".StoragePredictionActivity"
     android:orientation="vertical"
+    android:background="@color/white"
     android:layout_gravity="center">
 
     <Button
@@ -22,5 +23,18 @@
         android:id="@+id/image_v"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_image" />
+
+    <Button
+        android:id="@+id/view_info_image"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="View Information"
+        android:enabled="false"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_v" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,7 @@ import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -86,7 +87,7 @@ public class objectDetectorClass {
         return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declaredLength);
     }
     // create new Mat function
-    public Mat recognizeImage(Mat mat_image){
+    public Map.Entry recognizeImage(Mat mat_image){
         // Rotate original image by 90 degree get get portrait frame
         Mat rotated_mat_image=new Mat();
 
@@ -104,7 +105,7 @@ public class objectDetectorClass {
         width=bitmap.getWidth();
 
         // scale the bitmap to input size of model
-         Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,INPUT_SIZE,INPUT_SIZE,false);
+        Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,INPUT_SIZE,INPUT_SIZE,false);
 
          // convert bitmap to bytebuffer as model input should be in it
         ByteBuffer byteBuffer=convertBitmapToByteBuffer(scaledBitmap);
@@ -127,6 +128,7 @@ public class objectDetectorClass {
         // stores scores of 10 object
         float[][] classes=new float[1][10];
         // stores class of object
+        List<Float> result = new ArrayList<Float>();
 
         // add it to object_map;
         output_map.put(1,boxes);
@@ -152,6 +154,7 @@ public class objectDetectorClass {
             float score_value=(float) Array.get(Array.get(score,0),i);
             // define threshold for score
             if(score_value>0.5){
+                result.add(class_value);
                 Object box1=Array.get(Array.get(value,0),i);
                 // we are multiplying it with Original height and width of frame
 
@@ -173,10 +176,11 @@ public class objectDetectorClass {
         Mat b=rotated_mat_image.t();
         Core.flip(b,mat_image,0);
         b.release();
-        return mat_image;
+
+        return new AbstractMap.SimpleEntry<Mat, List<Float>>(mat_image, result);
     }
 
-    public Mat recognizePhoto(Mat mat_image){
+    public Map.Entry recognizePhoto(Mat mat_image){
 
         // if you do not do this process you will get improper prediction, less no. of object
         // now convert it to bitmap
@@ -211,6 +215,7 @@ public class objectDetectorClass {
         // stores scores of 10 object
         float[][] classes=new float[1][10];
         // stores class of object
+        List<Float> result = new ArrayList<Float>();
 
         // add it to object_map;
         output_map.put(1,boxes);
@@ -239,6 +244,7 @@ public class objectDetectorClass {
             float score_value=(float) Array.get(Array.get(score,0),i);
             // define threshold for score
             if(score_value>0.5){
+                result.add(class_value);
                 Object box1=Array.get(Array.get(value,0),i);
                 // we are multiplying it with Original height and width of frame
 
@@ -254,9 +260,9 @@ public class objectDetectorClass {
             }
 
         }
-        return mat_image;
-    }
 
+        return new AbstractMap.SimpleEntry<Mat, List<Float>>(mat_image, result);
+    }
 
     private ByteBuffer convertBitmapToByteBuffer(Bitmap bitmap) {
         ByteBuffer byteBuffer;
