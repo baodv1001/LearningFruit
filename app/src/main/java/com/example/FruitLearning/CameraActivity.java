@@ -5,21 +5,40 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 
 public class CameraActivity extends Activity implements CameraBridgeViewBase.CvCameraViewListener2{
     private static final String TAG="MainActivity";
@@ -28,6 +47,7 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     private Mat mGray;
     private CameraBridgeViewBase mOpenCvCameraView;
     private objectDetectorClass objectDetectorClass;
+    private Button button;
     private BaseLoaderCallback mLoaderCallback =new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -69,13 +89,61 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         mOpenCvCameraView=(CameraBridgeViewBase) findViewById(R.id.frame_Surface);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
+        button = findViewById(R.id.button);
         try{
-            // input size is 300 for this model
+            // input size is 320 for this model
             objectDetectorClass=new objectDetectorClass(getAssets(), "model.tflite","label.txt",320);
             Log.d("MainActivity","Model is successfully loaded");
         }
         catch (IOException e){
             Log.d("MainActivity","Getting some error");
+            e.printStackTrace();
+        }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takeScreenshot();
+            }
+        });
+    }
+
+    private void takeScreenshot() {
+        Date now = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_hhmmss");
+
+        try {
+            // image naming and path  to include sd card  appending name you choose for file
+            String mPath =  sdf.format(now) + ".jpg";
+
+            Bitmap bitmap=null;
+            bitmap=Bitmap.createBitmap(mRgba.cols(),mRgba.rows(),Bitmap.Config.ARGB_8888);
+            Utils.matToBitmap(mRgba,bitmap);
+            sendImage(bitmap, mPath);
+
+
+        } catch (Throwable e) {
+            // Several error may come out with file handling or DOM
+            e.printStackTrace();
+        }
+    }
+
+    private void sendImage(Bitmap bmp, String filename)
+    {
+        try {
+            //Write file
+            FileOutputStream stream = this.openFileOutput(filename, Context.MODE_PRIVATE);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+            //Cleanup
+            stream.close();
+            bmp.recycle();
+
+            //Pop intent
+            Intent in1 = new Intent(this, StoragePredictionActivity.class);
+            in1.putExtra("image", filename);
+            startActivity(in1);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -125,7 +193,8 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
 
         // now call that function
         Mat out=new Mat();
-        out=objectDetectorClass.recognizeImage(mRgba);
+        Map.Entry e  = objectDetectorClass.recognizeImage(mRgba);
+        out = (Mat)e.getKey();
 
         return out;
     }

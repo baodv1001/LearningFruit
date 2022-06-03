@@ -1,9 +1,9 @@
-Chuối
-Ổi
-Cam
-Táo
-Xoài
-Bơ
-Đu đủ
-Dưa hấu
-Bưởi
+Banana
+Guava
+Orange
+Apple
+Mango
+Avocado
+Papaya
+Watermelon
+Grapefruit
