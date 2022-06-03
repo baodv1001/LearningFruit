@@ -107,13 +107,13 @@ public class objectDetectorClass {
         // scale the bitmap to input size of model
         Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,INPUT_SIZE,INPUT_SIZE,false);
 
-         // convert bitmap to bytebuffer as model input should be in it
+        // convert bitmap to bytebuffer as model input should be in it
         ByteBuffer byteBuffer=convertBitmapToByteBuffer(scaledBitmap);
 
         // defining output
         // 10: top 10 object detected
         // 4: there coordinate in image
-      //  float[][][]result=new float[1][10][4];
+        //  float[][][]result=new float[1][10][4];
         Object[] input=new Object[1];
         input[0]=byteBuffer;
 
@@ -165,7 +165,7 @@ public class objectDetectorClass {
                 // draw rectangle in Original frame //  starting point    // ending point of box  // color of box       thickness
                 Imgproc.rectangle(rotated_mat_image,new Point(left,top),new Point(right,bottom),new Scalar(0, 255, 0, 255),2);
                 // write text on frame
-                                                // string of class name of object  // starting point                         // color of text           // size of text
+                // string of class name of object  // starting point                         // color of text           // size of text
                 Imgproc.putText(rotated_mat_image,labelList.get((int) class_value) +  String.valueOf(score_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
             }
 
@@ -300,6 +300,6 @@ public class objectDetectorClass {
                 }
             }
         }
-    return byteBuffer;
+        return byteBuffer;
     }
 }

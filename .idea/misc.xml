@@ -8,12 +8,23 @@
         <entry key="..\:/repo/LearningFruit/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
         <entry key="..\:/repo/LearningFruit/app/src/main/res/layout/activity_storage_prediction.xml" value="0.25" />
         <entry key="..\:/repo/LearningFruit/app/src/main/res/layout/item_fruit.xml" value="0.25" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.155" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/drawable/ic_launcher_background.xml" value="0.155" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/layout/acctivity_login.xml" value="0.22" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/layout/activity_camera.xml" value="0.1" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/layout/activity_fruit_quizz.xml" value="0.22" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/layout/activity_sign_up.xml" value="0.11684782608695653" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/layout/activity_splash.xml" value="0.11684782608695653" />
+        <entry key="..\:/Users/Ngoc Lam/Documents/GitHub/LearningFruit/app/src/main/res/layout/activity_storage_prediction.xml" value="0.14666666666666667" />
+        <entry key="..\:/repo/LearningFruit/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/repo/LearningFruit/app/src/main/res/layout/activity_storage_prediction.xml" value="0.25" />
         <entry key="..\:/repo/Object_Detection_App/Object_Detection_App-master/app/src/main/res/layout/activity_camera.xml" value="0.22826086956521738" />
         <entry key="..\:/repo/Object_Detection_App/Object_Detection_App-master/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
