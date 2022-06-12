@@ -51,6 +51,7 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-task-vision:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-task-text:0.1.0'
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
