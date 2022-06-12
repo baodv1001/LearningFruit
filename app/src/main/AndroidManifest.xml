@@ -34,19 +34,13 @@
             android:name=".StoragePredictionActivity"
             android:exported="false" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".MainActivity" >
-        android:theme="@style/Theme.FruitLearning">
-        <activity android:name=".FruitQuizzActivity"/>
-        <activity android:name=".CameraActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".FruitQuizzActivity"/>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".StoragePredictionActivity" />
         <activity android:name=".SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

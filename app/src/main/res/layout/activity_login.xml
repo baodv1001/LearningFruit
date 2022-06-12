@@ -7,7 +7,33 @@
     android:orientation="vertical"
     tools:context=".LoginActivity"
     android:gravity="center_horizontal"
-    android:layout_marginTop="40dp">
+    tools:ignore="MissingPrefix"
+    android:background="@drawable/gradient">
+
+    <ImageView
+        android:id="@+id/imgv_kid"
+        android:layout_width="match_parent"
+        android:layout_height="219dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="34px"
+        android:textAlignment="textStart"
+        android:text="Hi Kid"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="34px"
+        android:textAlignment="textStart"
+        android:text="Sign in to continue"
+        android:textColor="#99ffffff"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -57,5 +83,7 @@
             tools:layout_editor_absoluteX="161dp"
             tools:layout_editor_absoluteY="271dp"/>
     </LinearLayout>
+
+
 
 </LinearLayout>
