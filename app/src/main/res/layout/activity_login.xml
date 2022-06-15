@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/imgv_kid"
         android:layout_width="match_parent"
-        android:layout_height="219dp"
+        android:layout_height="220dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView

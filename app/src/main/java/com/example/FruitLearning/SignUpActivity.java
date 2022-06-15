@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,12 +19,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword, editTextConfirmPassword;
     private Button btnSignUp;
     private ProgressDialog progressDialog;
-
+    private ImageView imgvlogo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +39,28 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void initUI(){
         progressDialog = new ProgressDialog(this);
+        imgvlogo = findViewById(R.id.imgv_kid);
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
         btnSignUp = findViewById(R.id.buttonSignUp);
+
+        LoadImage();
+    }
+
+    private void LoadImage() {
+        try {
+            // get input stream
+
+            InputStream ims = getAssets().open("images/kid_1.png");
+            // load image as Drawable
+            Drawable d = Drawable.createFromStream(ims, null);
+            // set image to ImageView
+            imgvlogo.setImageDrawable(d);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initListener() {
@@ -84,4 +107,17 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    public void viewPassword(View view) {
+        if (editTextPassword.getInputType() != InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)
+            editTextPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        else
+            editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+    }
+
+    public void viewConfirmPassword(View view) {
+        if (editTextConfirmPassword.getInputType() != InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)
+            editTextConfirmPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        else
+            editTextConfirmPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+    }
 }

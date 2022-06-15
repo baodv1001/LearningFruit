@@ -3,16 +3,19 @@ package com.example.FruitLearning;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.opencv.android.OpenCVLoader;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
     static {
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Button storage_prediction;
     private Button btnLogOut;
     private Button btnMyQuiz;
+    private ImageView image_logo;
 
 
     @Override
@@ -35,13 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        // select device and run
-        // we successfully loaded model
-        // before next tutorial
-        // as we are going to predict in Camera Activity
-        // Next tutorial will be about predicting using Interpreter
-
+        image_logo = findViewById(R.id.image_logo);
 
         camera_button = findViewById(R.id.camera_button);
         camera_button.setOnClickListener(new View.OnClickListener() {
@@ -79,5 +77,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        LoadImage();
+    }
+
+    private void LoadImage()
+    {
+        try {
+            // get input stream
+
+            InputStream ims = getAssets().open("images/Logo.png");
+            // load image as Drawable
+            Drawable d = Drawable.createFromStream(ims, null);
+            // set image to ImageView
+            image_logo.setImageDrawable(d);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
