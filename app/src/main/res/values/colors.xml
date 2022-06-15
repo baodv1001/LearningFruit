@@ -10,4 +10,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="textHint">#48000000</color>
+    <color name="textColor">#4E4141</color>
+    <color name="buttonBackground">#E9ECFF</color>
 </resources>

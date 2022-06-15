@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/imgv_kid"
         android:layout_width="match_parent"
-        android:layout_height="219dp"
+        android:layout_height="220dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/custom_button_1"
-            android:drawableEnd="@drawable/ic_arrow_white"
+            android:drawableEnd="@drawable/ic_forward_white"
             android:drawableTint="@color/white"
             android:padding="16dp"
             android:text="Sign In"
@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@drawable/custom_button_2"
-            android:drawableEnd="@drawable/ic_arrow_primary"
+            android:drawableEnd="@drawable/ic_forward_primary"
             android:drawableTint="@color/primary"
             android:padding="16dp"
             android:text="Sign Up"

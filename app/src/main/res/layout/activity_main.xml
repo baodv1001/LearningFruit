@@ -4,44 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/white"
+    android:background="@drawable/gradient"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
+    tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Method"
-        android:textAllCaps="false"
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="30dp"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:id="@+id/camera_button"
-        android:text="Real-time"
-        />
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_height="440dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:id="@+id/storage_prediction"
-        android:text="Storage"
-        />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:weightSum="2"
+        android:background="@drawable/layout_bg"
+        android:padding="16dp">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnFruitQuiz"
-        android:text="My quiz"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLogOut"
-        android:text="Log out"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/camera_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
+                app:backgroundTint="@null"
+                android:background="@drawable/custom_button_3"
+                android:textColor="@color/textColor"
+                android:drawableTop="@drawable/ic_akar_icons_camera"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:text="Camera Detection" />
+            <Button
+                android:id="@+id/btnFruitQuiz"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/custom_button_3"
+                android:textColor="@color/textColor"
+                android:drawableTop="@drawable/ic_quiz"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:layout_weight="1"
+                android:text="My quiz" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="parent"
+            android:layout_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/layout_1">
+
+            <Button
+                android:id="@+id/storage_prediction"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
+                app:backgroundTint="@null"
+                android:background="@drawable/custom_button_3"
+                android:textColor="@color/textColor"
+                android:drawableTop="@drawable/ic_results"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:text="Image Detection" />
+            <Button
+                android:id="@+id/btnLogOut"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="12dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/custom_button_3"
+                android:textColor="@color/textColor"
+                android:drawableTop="@drawable/ic_logout"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:text="Log out" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </LinearLayout>
