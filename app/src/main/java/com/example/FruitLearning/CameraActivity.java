@@ -48,6 +48,7 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     private CameraBridgeViewBase mOpenCvCameraView;
     private objectDetectorClass objectDetectorClass;
     private Button button;
+    private Button btnBack;
     private BaseLoaderCallback mLoaderCallback =new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -89,7 +90,8 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         mOpenCvCameraView=(CameraBridgeViewBase) findViewById(R.id.frame_Surface);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
-        button = findViewById(R.id.button);
+        btnBack = findViewById(R.id.btnBack);
+        button = findViewById(R.id.buttonFinish);
         try{
             // input size is 320 for this model
             objectDetectorClass=new objectDetectorClass(getAssets(), "model.tflite","label.txt",320);
@@ -104,6 +106,14 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
             @Override
             public void onClick(View view) {
                 takeScreenshot();
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CameraActivity.this, MainActivity.class);
+                startActivity(intent);
+                finishAffinity();
             }
         });
     }

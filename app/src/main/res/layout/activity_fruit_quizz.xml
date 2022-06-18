@@ -1,95 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
-    android:padding="24dp"
+    android:orientation="vertical"
     tools:context=".FruitQuizzActivity">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/back_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/total_question"
-        android:text="Total Questions "
-        android:layout_centerHorizontal="true"
-        android:textSize="20dp"/>
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/ic_back_primary"
+            android:paddingRight="8dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/question"
-        android:textStyle="bold"
-        android:text="This will be the question"
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        android:textAlignment="center"
-        android:layout_margin="20dp"
-        android:layout_above="@id/choices_layout"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:text="Play Quiz"
+            android:textColor="#666666"
+            android:textSize="18dp" />
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_number_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_alignTop="@id/back_home">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineHeight="38px"
+            android:text="Question "
+            android:textColor="#666666"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/stt_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineHeight="38px"
+            android:text="STT"
+            android:textColor="#666666"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/total_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineHeight="23px"
+            android:text="/Tổng số câu hỏi"
+            android:textColor="#666666"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/choices_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/card_question_quiz"
+        android:orientation="vertical"
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="20dp">
 
-        <Button
+        <TextView
+            android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@id/choices_layout"
+            android:layout_marginBottom="30dp"
+            android:text="This will be the question"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/ans_A"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:drawableTint="@color/white"
+            android:paddingLeft="30dp"
             android:text="Ans A"
-            android:textColor="@color/black"/>
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            app:cornerRadius="5dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp"
+            />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/ans_B"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:drawableTint="@color/white"
+            android:paddingLeft="30dp"
             android:text="Ans B"
-            android:textColor="@color/black"/>
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            app:cornerRadius="5dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/ans_C"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
-            android:text="Ans C"
-            android:textColor="@color/black"/>
-        <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ans_D"
+            android:layout_height="60dp"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:drawableTint="@color/white"
+            android:paddingLeft="30dp"
+            android:text="Ans C"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            app:cornerRadius="5dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ans_D"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:drawableTint="@color/white"
+            android:paddingLeft="30dp"
             android:text="Ans D"
-            android:textColor="@color/black"/>
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            app:cornerRadius="5dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/submit_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|center"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/custom_button_1"
+        android:drawableEnd="@drawable/ic_forward_white"
+        android:drawableTint="@color/white"
+        android:paddingHorizontal="15dp"
         android:text="Submit"
-        android:layout_below="@id/choices_layout"
-        android:layout_marginTop="40dp"/>
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
 
-    <Button
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnCancel"
-        android:text="Cancel"
-        android:layout_marginTop="100dp"
-        android:layout_below="@id/choices_layout"/>
-
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="30dp"
+        app:layout_constraintGuide_begin="100dp"
+        android:layout_alignTop="@id/layout_number_question"
+        />
 
 
 </RelativeLayout>

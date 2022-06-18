@@ -14,9 +14,10 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
 
     TextView totalQuestionsTextView;
     TextView questionTextView;
+    TextView noQuestion;
     Button ansA, ansB, ansC, ansD;
     Button submitBtn;
-    Button cancel;
+    Button btnBack;
 
     int score=0;
     int totalQuestion = QuestionAnswer.question.length;
@@ -34,20 +35,16 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
         ansB = findViewById(R.id.ans_B);
         ansC = findViewById(R.id.ans_C);
         ansD = findViewById(R.id.ans_D);
-        submitBtn = findViewById(R.id.submit_btn);
-        cancel = findViewById(R.id.btnCancel);
+        submitBtn = findViewById(R.id.buttonSubmit);
+        btnBack = findViewById(R.id.btnBack);
+        noQuestion = findViewById(R.id.stt_question);
 
         ansA.setOnClickListener((View.OnClickListener) this);
         ansB.setOnClickListener((View.OnClickListener) this);
         ansC.setOnClickListener((View.OnClickListener) this);
         ansD.setOnClickListener((View.OnClickListener) this);
         submitBtn.setOnClickListener((View.OnClickListener) this);
-
-        totalQuestionsTextView.setText("Total questions : "+totalQuestion);
-
-        loadNewQuestion();
-
-        cancel.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FruitQuizzActivity.this, MainActivity.class);
@@ -55,6 +52,10 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
                 finishAffinity();
             }
         });
+
+        totalQuestionsTextView.setText(totalQuestion);
+
+        loadNewQuestion();
     }
 
     @Override
@@ -66,7 +67,7 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
         ansD.setBackgroundColor(Color.WHITE);
 
         Button clickedButton = (Button) view;
-        if(clickedButton.getId()==R.id.submit_btn){
+        if(clickedButton.getId()==R.id.buttonSubmit){
             if(selectedAnswer.equals(QuestionAnswer.correctAnswers[currentQuestionIndex])){
                 score++;
             }
@@ -74,13 +75,12 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
             loadNewQuestion();
 
 
-        }else{
-            //choices button clicked
-            selectedAnswer  = clickedButton.getText().toString();
-            clickedButton.setBackgroundColor(Color.MAGENTA);
-
+        } else{
+                //choices button clicked
+                selectedAnswer  = clickedButton.getText().toString();
+                //clickedButton.setTextColor(Integer.parseInt("#3DFD18"));
+                clickedButton.setBackgroundColor(Color.MAGENTA);
         }
-
     }
 
     private void loadNewQuestion() {
@@ -88,7 +88,7 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
             finishQuiz();
             return;
         }
-
+        noQuestion.setText(currentQuestionIndex+1);
         questionTextView.setText(QuestionAnswer.question[currentQuestionIndex]);
         ansA.setText(QuestionAnswer.choices[currentQuestionIndex][0]);
         ansB.setText(QuestionAnswer.choices[currentQuestionIndex][1]);

@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,7 @@ public class DetailFruitActivity extends AppCompatActivity {
 
     private static final String TAG = "log";
     private RecyclerView rvFruits;
+    private Button btnBack;
     private ArrayList<Fruit> mFruits = new ArrayList<Fruit>(){};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public class DetailFruitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_fruit);
 
         rvFruits = findViewById(R.id.rv_fruits);
-
+        btnBack = findViewById(R.id.btnBack);
         Bundle b = getIntent().getExtras();
         float[] classes = b.getFloatArray("classes");
         if (classes!=null && classes.length>0)
@@ -48,12 +52,12 @@ public class DetailFruitActivity extends AppCompatActivity {
                         Fruit fruit = dataSnapshot.child(String.valueOf(Math.round(value))).getValue(Fruit.class);
                         mFruits.add(fruit);
                     }
-                    Toast toast = Toast.makeText(DetailFruitActivity.this, "size: " + mFruits.size(), Toast.LENGTH_LONG);
-                    toast.show();
+
                     FruitsAdapter adapter = new FruitsAdapter(mFruits);
                     rvFruits.setAdapter(adapter);
 
                     rvFruits.setLayoutManager(new LinearLayoutManager(DetailFruitActivity.this));
+
                 }
 
                 @Override
@@ -63,6 +67,15 @@ public class DetailFruitActivity extends AppCompatActivity {
                 }
             });
         }
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailFruitActivity.this, MainActivity.class);
+                startActivity(intent);
+                finishAffinity();
+            }
+        });
 
     }
 

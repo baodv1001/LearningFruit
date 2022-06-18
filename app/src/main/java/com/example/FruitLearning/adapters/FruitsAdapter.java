@@ -1,6 +1,7 @@
 package com.example.FruitLearning.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.FruitLearning.DetailFruitActivity;
+import com.example.FruitLearning.LoginActivity;
+import com.example.FruitLearning.MainActivity;
 import com.example.FruitLearning.R;
 import com.example.FruitLearning.models.Fruit;
 
@@ -37,7 +41,6 @@ public class FruitsAdapter extends RecyclerView.Adapter<FruitsAdapter.ViewHolder
         // Set item views based on your views and data model
         TextView textView = holder.name_tv;
         textView.setText(fruit.name);
-        Button button = holder.detail_btn;
     }
 
     @Override
@@ -47,12 +50,10 @@ public class FruitsAdapter extends RecyclerView.Adapter<FruitsAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name_tv;
-        public Button detail_btn;
         public ViewHolder(View item){
             super(item);
 
             name_tv = (TextView) item.findViewById(R.id.fruit_name);
-            detail_btn = (Button) item.findViewById(R.id.detail_button);
         }
     }
 
