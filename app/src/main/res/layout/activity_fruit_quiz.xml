@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FruitQuizzActivity">
+    tools:context=".FruitQuizActivity">
 
     <LinearLayout
         android:id="@+id/back_home"
@@ -180,6 +180,7 @@
         android:textStyle="bold"
         app:backgroundTint="@null" />
 
+<!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="match_parent"
@@ -190,6 +191,7 @@
         app:layout_constraintGuide_begin="100dp"
         android:layout_alignTop="@id/layout_number_question"
         />
+-->
 
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,34 +8,98 @@
     tools:context=".StoragePredictionActivity"
     android:orientation="vertical"
     android:background="@color/white"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="20dp"
+    >
 
-    <Button
-        android:id="@+id/select_image"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:text="Select Image"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/image_v"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_image" />
-
-    <Button
-        android:id="@+id/view_info_image"
+    <LinearLayout
+        android:id="@+id/back_home"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="View Information"
-        android:enabled="false"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_v" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/ic_back_primary"
+            android:paddingRight="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Storage prediction"
+            android:textColor="#666666"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <ImageView
+            android:id="@+id/image_v"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+        <TextView
+            android:id="@+id/tv_TittleFruit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:lineHeight="23dp"
+            android:textStyle="bold"
+            android:text="Tittle"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+        <TextView
+            android:id="@+id/tv_infoFruit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="info"
+            android:textSize="13sp"
+            android:lineHeight="22dp"
+            android:gravity="fill_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/select_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_button_1"
+            android:backgroundTint="@null"
+            android:text="Select Image"
+            android:textAllCaps="false"
+            />
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/view_info_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button_1"
+            android:backgroundTint="@null"
+            android:enabled="false"
+            android:text="Information"
+            android:textAllCaps="false"
+            />
+    </LinearLayout>
+
+</FrameLayout>

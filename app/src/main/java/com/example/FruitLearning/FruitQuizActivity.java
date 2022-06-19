@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class FruitQuizzActivity extends AppCompatActivity implements View.OnClickListener{
+public class FruitQuizActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView totalQuestionsTextView;
     TextView questionTextView;
@@ -27,7 +27,7 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fruit_quizz);
+        setContentView(R.layout.activity_fruit_quiz);
 
         totalQuestionsTextView = findViewById(R.id.total_question);
         questionTextView = findViewById(R.id.question);
@@ -47,7 +47,7 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FruitQuizzActivity.this, MainActivity.class);
+                Intent intent = new Intent(FruitQuizActivity.this, MainActivity.class);
                 startActivity(intent);
                 finishAffinity();
             }
@@ -90,10 +90,10 @@ public class FruitQuizzActivity extends AppCompatActivity implements View.OnClic
         }
         noQuestion.setText(currentQuestionIndex+1);
         questionTextView.setText(QuestionAnswer.question[currentQuestionIndex]);
-        ansA.setText(QuestionAnswer.choices[currentQuestionIndex][0]);
-        ansB.setText(QuestionAnswer.choices[currentQuestionIndex][1]);
-        ansC.setText(QuestionAnswer.choices[currentQuestionIndex][2]);
-        ansD.setText(QuestionAnswer.choices[currentQuestionIndex][3]);
+        ansA.setText("A. " + QuestionAnswer.choices[currentQuestionIndex][0]);
+        ansB.setText("B. " + QuestionAnswer.choices[currentQuestionIndex][1]);
+        ansC.setText("C. " + QuestionAnswer.choices[currentQuestionIndex][2]);
+        ansD.setText("D. " + QuestionAnswer.choices[currentQuestionIndex][3]);
     }
 
     private void finishQuiz() {

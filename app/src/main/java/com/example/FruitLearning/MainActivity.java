@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         btnMyQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, FruitQuizzActivity.class);
+                Intent intent = new Intent(MainActivity.this, FruitQuizActivity.class);
                 startActivity(intent);
                 finish();
             }

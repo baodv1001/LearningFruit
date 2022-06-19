@@ -33,6 +33,7 @@ import java.util.Map;
 public class StoragePredictionActivity extends AppCompatActivity {
     private Button select_image;
     private Button view_detail;
+    private Button btn_Back;
     private ImageView image_v;
     private objectDetectorClass objectDetectorClass;
     int SELECT_PICTURE=200;
@@ -43,9 +44,18 @@ public class StoragePredictionActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_storage_prediction);
 
-        select_image=findViewById(R.id.select_image);
-        view_detail=findViewById(R.id.view_info_image);
-        image_v=findViewById(R.id.image_v);
+        select_image = findViewById(R.id.select_image);
+        view_detail = findViewById(R.id.view_info_image);
+        image_v = findViewById(R.id.image_v);
+        btn_Back = findViewById(R.id.btnBack);
+        btn_Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StoragePredictionActivity.this, MainActivity.class);
+                startActivity(intent);
+                finishAffinity();
+            }
+        });
 
         try{
             objectDetectorClass=new objectDetectorClass(getAssets(), "model.tflite","label.txt",320);
