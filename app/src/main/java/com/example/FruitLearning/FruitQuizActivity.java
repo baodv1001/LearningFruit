@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 public class FruitQuizActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView totalQuestionsTextView;
@@ -53,7 +54,7 @@ public class FruitQuizActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
-        totalQuestionsTextView.setText(totalQuestion);
+        totalQuestionsTextView.setText("/"+totalQuestion);
 
         loadNewQuestion();
     }
@@ -61,10 +62,15 @@ public class FruitQuizActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
 
-        ansA.setBackgroundColor(Color.WHITE);
-        ansB.setBackgroundColor(Color.WHITE);
-        ansC.setBackgroundColor(Color.WHITE);
-        ansD.setBackgroundColor(Color.WHITE);
+        ansA.setBackgroundColor(Color.TRANSPARENT);
+        ansA.setCompoundDrawablesWithIntrinsicBounds(null,null,getDrawable(R.drawable.ic_baseline_panorama_fish_eye_24),null);
+        ansB.setBackgroundColor(Color.TRANSPARENT);
+        ansB.setCompoundDrawablesWithIntrinsicBounds(null,null,getDrawable(R.drawable.ic_baseline_panorama_fish_eye_24),null);
+        ansC.setBackgroundColor(Color.TRANSPARENT);
+        ansC.setCompoundDrawablesWithIntrinsicBounds(null,null,getDrawable(R.drawable.ic_baseline_panorama_fish_eye_24),null);
+        ansD.setBackgroundColor(Color.TRANSPARENT);
+        ansD.setCompoundDrawablesWithIntrinsicBounds(null,null,getDrawable(R.drawable.ic_baseline_panorama_fish_eye_24),null);
+
 
         Button clickedButton = (Button) view;
         if(clickedButton.getId()==R.id.buttonSubmit){
@@ -77,9 +83,10 @@ public class FruitQuizActivity extends AppCompatActivity implements View.OnClick
 
         } else{
                 //choices button clicked
-                selectedAnswer  = clickedButton.getText().toString();
+                selectedAnswer  = clickedButton.getText().toString().substring(3);
                 //clickedButton.setTextColor(Integer.parseInt("#3DFD18"));
-                clickedButton.setBackgroundColor(Color.MAGENTA);
+                clickedButton.setBackgroundColor(Color.BLUE);
+                clickedButton.setCompoundDrawablesWithIntrinsicBounds(null,null,getDrawable(R.drawable.ic_choice),null);
         }
     }
 
@@ -88,7 +95,7 @@ public class FruitQuizActivity extends AppCompatActivity implements View.OnClick
             finishQuiz();
             return;
         }
-        noQuestion.setText(currentQuestionIndex+1);
+        noQuestion.setText(String.valueOf(currentQuestionIndex+1));
         questionTextView.setText(QuestionAnswer.question[currentQuestionIndex]);
         ansA.setText("A. " + QuestionAnswer.choices[currentQuestionIndex][0]);
         ansB.setText("B. " + QuestionAnswer.choices[currentQuestionIndex][1]);
