@@ -54,15 +54,14 @@ public class DetailFruitActivity extends AppCompatActivity {
 
             LoadFromLocal(classes);
 
-            if (getConnectionType(this) != 0)
-            {
-                LoadFromFireBase(classes);
-            }
-            else
-            {
-                LoadFromLocal(classes);
-            }
-
+//            if (getConnectionType(this) != 0)
+//            {
+//                LoadFromFireBase(classes);
+//            }
+//            else
+//            {
+//                LoadFromLocal(classes);
+//            }
         }
 
         btnBack.setOnClickListener(new View.OnClickListener() {
