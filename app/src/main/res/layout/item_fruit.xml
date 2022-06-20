@@ -5,27 +5,42 @@
     android:padding="15dp"
     android:layout_marginBottom="20dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:weightSum="2"
     android:background="@drawable/card_item_fruit">
 
-    <TextView
-        android:id="@+id/fruit_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:textColor="@color/black"
-        android:text="Fruit Name"
-        android:textStyle="bold"
-        />
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/fruit_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/textColor"
+            android:text="Fruit Name"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"/>
-    <TextView
-        android:id="@+id/tv_infoFruit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="info"
-        android:textColor="@color/black">
-    </TextView>
+<!--        <Space-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="5dp"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_infoFruit"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="info"-->
+<!--            android:textColor="@color/black">-->
+<!--        </TextView>-->
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <ImageView
+        android:id="@+id/imageview_fruit"
+        android:layout_weight="1"
+        android:layout_width="128dp"
+        android:layout_height="64dp">
+    </ImageView>
+
 </LinearLayout>

@@ -7,7 +7,7 @@
     android:background="@drawable/gradient"
     android:orientation="vertical"
     tools:ignore="MissingPrefix"
-    tools:context=".DetailFruitActivity">
+    tools:context=".ViewFruitDetailActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -25,9 +25,10 @@
             android:drawableTint="@color/white"
             />
         <TextView
+            android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fruit list"
+            android:text="Detail Information"
             android:textColor="@color/white"
             android:textSize="24dp"
             android:layout_marginTop="8dp"
@@ -41,15 +42,26 @@
         android:background="@drawable/layout_bg"
         android:padding="16dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_fruits"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_height="200dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toTopOf="parent">
+        </ImageView>
+        <TextView
+            android:id="@+id/textViewInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/textColor"
+            android:layout_marginTop="16dp"
+            android:text="Detail"
+            android:textSize="18dp">
+        </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

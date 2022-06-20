@@ -157,7 +157,7 @@ public class DetailFruitActivity extends AppCompatActivity {
     private void LoadToRecycleView()
     {
         mFruits = Array.removeDuplicates(mFruits);
-        FruitsAdapter adapter = new FruitsAdapter(mFruits);
+        FruitsAdapter adapter = new FruitsAdapter(getBaseContext(), mFruits);
         rvFruits.setAdapter(adapter);
 
         rvFruits.setLayoutManager(new LinearLayoutManager(DetailFruitActivity.this));
