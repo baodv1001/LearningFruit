@@ -17,8 +17,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.opencv.android.Utils;
 import org.opencv.core.CvType;
@@ -45,7 +43,7 @@ public class StoragePredictionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_storage_prediction);
 
         select_image = findViewById(R.id.select_image);
-        view_detail = findViewById(R.id.view_info_image);
+        view_detail = findViewById(R.id.view_detail);
         image_v = findViewById(R.id.image_v);
         btn_Back = findViewById(R.id.btnBack);
         btn_Back.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +96,6 @@ public class StoragePredictionActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void viewDetail()
     {
-
             //Pop intent
             Bundle b = new Bundle();
             b.putFloatArray("classes", classes);
@@ -169,9 +166,9 @@ public class StoragePredictionActivity extends AppCompatActivity {
         image_v.setImageBitmap(bitmap1);
 
         if (classes.length > 0) {
-            view_detail.setEnabled(true);
+            view_detail.setVisibility(View.VISIBLE);
         } else {
-            view_detail.setEnabled(false);
+            view_detail.setVisibility(View.GONE);
         }
     }
 }

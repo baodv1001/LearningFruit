@@ -39,8 +39,10 @@ public class FruitsAdapter extends RecyclerView.Adapter<FruitsAdapter.ViewHolder
         Fruit fruit = mFruits.get(position);
 
         // Set item views based on your views and data model
-        TextView textView = holder.name_tv;
-        textView.setText(fruit.name);
+        TextView name_tv = holder.name_tv;
+        TextView info_tv = holder.info_tv;
+        name_tv.setText(fruit.name);
+        info_tv.setText(fruit.description);
     }
 
     @Override
@@ -50,10 +52,12 @@ public class FruitsAdapter extends RecyclerView.Adapter<FruitsAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name_tv;
+        public TextView info_tv;
         public ViewHolder(View item){
             super(item);
 
             name_tv = (TextView) item.findViewById(R.id.fruit_name);
+            info_tv = (TextView) item.findViewById(R.id.tv_infoFruit);
         }
     }
 

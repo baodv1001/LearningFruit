@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,19 +10,20 @@
     android:background="@color/white"
     android:layout_gravity="center"
     android:paddingHorizontal="20dp"
-    android:paddingTop="20dp"
-    >
-
+    android:paddingTop="20dp">
     <LinearLayout
         android:id="@+id/back_home"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:orientation="horizontal">
-
         <Button
             android:id="@+id/btnBack"
             android:layout_width="40dp"
             android:layout_height="30dp"
+            android:drawableTint="@color/textColor"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/ic_back_primary"
             android:paddingRight="8dp"/>
@@ -31,75 +32,76 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="Storage prediction"
-            android:textColor="#666666"
-            android:textSize="18dp" />
+            android:textColor="@color/textColor"
+            android:textSize="22dp" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        app:layout_constraintTop_toBottomOf="@id/back_home"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical">
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
         <ImageView
             android:id="@+id/image_v"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp"/>
-        <TextView
-            android:id="@+id/tv_TittleFruit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:lineHeight="23dp"
-            android:textStyle="bold"
-            android:text="Tittle"/>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="5dp"/>
-        <TextView
-            android:id="@+id/tv_infoFruit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="info"
-            android:textSize="13sp"
-            android:lineHeight="22dp"
-            android:gravity="fill_vertical"/>
+            android:layout_height="match_parent" />
+<!--        <Space-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="10dp"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_TittleFruit"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="16sp"-->
+<!--            android:lineHeight="23dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:text="Tittle"/>-->
+<!--        <Space-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="5dp"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_infoFruit"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="info"-->
+<!--            android:textSize="13sp"-->
+<!--            android:lineHeight="22dp"-->
+<!--            android:gravity="fill_vertical"/>-->
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="20dp">
-
         <Button
             android:id="@+id/select_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/custom_button_1"
-            android:backgroundTint="@null"
+            app:backgroundTint="@null"
+            android:textColor="@color/white"
             android:text="Select Image"
-            android:textAllCaps="false"
-            />
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent"/>
+            android:textAllCaps="false" />
         <Button
-            android:id="@+id/view_info_image"
+            android:id="@+id/view_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button_1"
-            android:backgroundTint="@null"
-            android:enabled="false"
-            android:text="Information"
-            android:textAllCaps="false"
-            />
+            app:backgroundTint="@null"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:text="Detail Information"
+            android:textAllCaps="false" />
     </LinearLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

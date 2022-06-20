@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.FruitLearning.data.QuestionAnswer;
+
 
 public class FruitQuizActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -85,7 +87,7 @@ public class FruitQuizActivity extends AppCompatActivity implements View.OnClick
                 //choices button clicked
                 selectedAnswer  = clickedButton.getText().toString().substring(3);
                 //clickedButton.setTextColor(Integer.parseInt("#3DFD18"));
-                clickedButton.setBackgroundColor(Color.BLUE);
+                clickedButton.setBackgroundColor(Color.parseColor("#2855AE"));
                 clickedButton.setCompoundDrawablesWithIntrinsicBounds(null,null,getDrawable(R.drawable.ic_choice),null);
         }
     }

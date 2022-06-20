@@ -1,4 +1,4 @@
-package com.example.FruitLearning;
+package com.example.FruitLearning.data;
 
 public class QuestionAnswer {
     public static String question[] ={

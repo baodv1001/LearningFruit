@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".FruitQuizActivity">
 
     <LinearLayout
@@ -13,27 +14,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <Button
             android:id="@+id/btnBack"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
+            android:drawableTint="@color/textColor"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/ic_back_primary"
             android:paddingRight="8dp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="8dp"
             android:text="Play Quiz"
-            android:textColor="#666666"
-            android:textSize="18dp" />
+            android:textColor="@color/textColor"
+            android:textSize="22dp" />
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/layout_number_question"
         android:layout_width="match_parent"
@@ -43,7 +42,6 @@
         android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:layout_alignTop="@id/back_home">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +49,6 @@
             android:text="Question "
             android:textColor="#666666"
             android:textSize="30sp" />
-
         <TextView
             android:id="@+id/stt_question"
             android:layout_width="wrap_content"
@@ -60,7 +57,6 @@
             android:text="STT"
             android:textColor="#666666"
             android:textSize="30sp" />
-
         <TextView
             android:id="@+id/total_question"
             android:layout_width="wrap_content"
@@ -69,9 +65,7 @@
             android:text="/Tổng số câu hỏi"
             android:textColor="#666666"
             android:textSize="18sp" />
-
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/choices_layout"
         android:layout_width="match_parent"
@@ -83,7 +77,6 @@
         android:orientation="vertical"
         android:paddingHorizontal="25dp"
         android:paddingVertical="20dp">
-
         <TextView
             android:id="@+id/question"
             android:layout_width="match_parent"
@@ -94,7 +87,6 @@
             android:textColor="@color/white"
             android:textSize="24dp"
             android:textStyle="bold" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ans_A"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -112,7 +104,6 @@
             app:strokeColor="@color/white"
             app:strokeWidth="2dp"
             />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ans_B"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -129,7 +120,6 @@
             app:cornerRadius="5dp"
             app:strokeColor="@color/white"
             app:strokeWidth="2dp" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ans_C"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -146,7 +136,6 @@
             app:cornerRadius="5dp"
             app:strokeColor="@color/white"
             app:strokeWidth="2dp" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ans_D"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -163,9 +152,7 @@
             app:cornerRadius="5dp"
             app:strokeColor="@color/white"
             app:strokeWidth="2dp" />
-
     </LinearLayout>
-
     <Button
         android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
@@ -183,7 +170,6 @@
         android:textSize="18dp"
         android:textStyle="bold"
         app:backgroundTint="@null" />
-
 <!--
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
